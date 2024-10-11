@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijeras - Estilo Moderno</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Piedra, Papel o Tijeras</h1>
+        <div class="choices">
+            <div class="choice" onclick="playGame('piedra')">✊ Piedra</div>
+            <div class="choice" onclick="playGame('papel')">🖐️ Papel</div>
+            <div class="choice" onclick="playGame('tijeras')">✌️ Tijeras</div>
+        </div>
+        <div id="result">
+            <p id="user-choice">Tu elección: </p>
+            <p id="computer-choice">Elección de la computadora: </p>
+            <p id="outcome"></p>
+        </div>
+    </div>
+
+    <script>
+        function playGame(userChoice) {
+            const choices = ['piedra', 'papel', 'tijeras'];
+            const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            document.getElementById('user-choice').innerText = 'Tu elección: ' + userChoice;
+            document.getElementById('computer-choice').innerText = 'Elección de la computadora: ' + computerChoice;
+
+            let outcome = '';
+
+            if (userChoice === computerChoice) {
+                outcome = '¡Es un empate!';
+            } else if (
+                (userChoice === 'piedra' && computerChoice === 'tijeras') ||
+                (userChoice === 'papel' && computerChoice === 'piedra') ||
+                (userChoice === 'tijeras' && computerChoice === 'papel')
+            ) {
+                outcome = '¡Ganaste!';
+            } else {
+                outcome = 'Perdiste.';
+            }
+
+            document.getElementById('outcome').innerText = outcome;
+        }
+    </script>
+
+</body>
+
+</html>
